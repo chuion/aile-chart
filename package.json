@@ -1,0 +1,33 @@
+{
+  "name": "aile-chart",
+  "version": "0.1.0",
+  "description": "Advanced Echarts Vue Component",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint --ext .js,.vue ./ --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chuion/aile-chart.git"
+  },
+  "keywords": [
+    "echarts",
+    "aile-chart"
+  ],
+  "author": "chuion",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chuion/aile-chart/issues"
+  },
+  "homepage": "https://github.com/chuion/aile-chart#readme",
+  "devDependencies": {
+    "eslint": "^7.20.0",
+    "eslint-config-chuion": "^1.0.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-vue": "^7.5.0"
+  },
+  "peerDependencies": {
+    "echarts": "^5.0.2",
+    "resize-detector": "^0.2.2"
+  }
+}
