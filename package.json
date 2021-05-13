@@ -1,6 +1,6 @@
 {
   "name": "aile-chart",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Advanced Echarts Vue Component",
   "main": "index.js",
   "scripts": {

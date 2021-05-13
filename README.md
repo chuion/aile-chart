@@ -17,7 +17,7 @@
 
 ### Features
 
-`aile-chart` 是一款运行在 `vue 2.x` 环境下的 `Apache Echarts 5.x` 组件，基于 [vue-echarts](https://github.com/ecomfe/vue-echarts) 进行的二次开发
+`aile-chart` 是一款运行在 `vue 2.x` 环境下的 `Apache ECharts 5.x` 组件，基于 [vue-echarts](https://github.com/ecomfe/vue-echarts) 进行的二次开发
 
 - `aile-chart` 通过 `use` 安装插件的方式来实现 `echarts` 皮肤、地图、默认参数的配置
 
@@ -84,7 +84,7 @@ export default {
 
 ### Attributes/Props 属性
 
-使用方式： `<aile-chart preset="red" :option="calcOption" ... />` 
+使用方式： `<aile-chart preset="red" :option="calcOption" ... />`
 
 |     参数     | 数据类型 |         默认值         |   可选值   |                                              说明                                              |
 | :----------: | :------: | :--------------------: | :--------: | :--------------------------------------------------------------------------------------------: |
@@ -101,11 +101,50 @@ export default {
 |   notMerge   | Boolean  |         false          | false/true |                               是否不跟之前设置的 option 进行合并                               |
 |  autoResize  | Boolean  |         false          | false/true |                                      当尺寸变化时自动重绘                                      |
 
+### Util Methods 工具方法
 
+#### getThemeOption
+
+**说明**
+
+`getThemeOption(theme, path)`
+获取主题配置JSON，该JSON在`aile-chart`注册时设置`themes`中的`theme`
+
+**参数**
+
+- **theme(string)**
+主题名称，必填
+
+- **path(string)**
+属性路径，设置该值则返回主题JSON该路径下的值，否则返回全部
+
+**返回值**
+
+- **(*)**: 任意值
+
+#### getExtraOption
+
+**说明**
+
+`getExtraOption(theme, path)`
+获取主题额外配置的JSON，该JSON在`aile-chart`注册时设置`themes`中的`extra`
+
+**参数**
+
+- **theme(string)**
+主题名称，必填
+
+- **path(string)**
+属性路径，设置该值则返回主题JSON该路径下的值，否则返回全部
+
+**返回值**
+
+- **(*)**: 任意值
 
 ### Usage Example 使用示例
 
-- 预先配置好的 Echarts Option
+- 预先配置好的 ECharts Option
+
 ```javascript
 export default {
   tooltip: {
@@ -179,7 +218,7 @@ import AileChart from 'aile-chart';
 // 引入预设Option
 import LineOption from './chart-options/lineChart';
 
-// 引入 Echarts Theme JSON 文件 （由官网主题生成工具制作）
+// 引入 ECharts Theme JSON 文件 （由官网主题生成工具制作）
 import redThemeJSON from '@/themes/echarts-archaism.json';
 import blueThemeJSON from '@/themes/echarts-business.json';
 

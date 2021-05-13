@@ -3,8 +3,7 @@
  * @param {any} data 待检测的数据
  */
 export function checkType(data) {
-  return Object.prototype.toString.call(data).slice(8, -1)
-    .toLowerCase();
+  return Object.prototype.toString.call(data).slice(8, -1).toLowerCase();
 }
 
 /**

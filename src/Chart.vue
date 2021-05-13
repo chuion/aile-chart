@@ -1,7 +1,7 @@
 <template>
   <div
     ref="chart"
-    class="aile-chart"
+    :class="['aile-chart', `aile-chart--${preset}`]"
     :style="style"
   />
 </template>
@@ -10,10 +10,10 @@
 import * as echarts from 'echarts';
 import { merge, debounce, cloneDeep } from './utils';
 import { addListener, removeListener } from 'resize-detector';
-
 const INIT_TRIGGERS = ['theme', 'initOptions', 'autoResize'];
 const REWATCH_TRIGGERS = ['manualUpdate', 'watchShallow'];
 const DefaultConfig = { presets: {} };
+
 export default {
   name: 'AileChart',
   props: {
@@ -123,7 +123,6 @@ export default {
   },
   created() {
     this.initOptionsWatcher();
-
     INIT_TRIGGERS.forEach(prop => {
       this.$watch(
         prop,
@@ -133,7 +132,6 @@ export default {
         { deep: true }
       );
     });
-
     REWATCH_TRIGGERS.forEach(prop => {
       this.$watch(prop, () => {
         this.initOptionsWatcher();
@@ -163,7 +161,6 @@ export default {
       if (this.manualUpdate) {
         this.manualOptions = options;
       }
-
       if (!this.chart) {
         this.init(options);
       } else {
@@ -227,24 +224,19 @@ export default {
       if (this.chart) {
         return;
       }
-
       const chart = echarts.init(this.$el, this.calcTheme, this.initOptions);
-
       if (this.group) {
         chart.group = this.group;
       }
-
       chart.setOption(options || this.manualOptions || this.options || {}, true);
       Object.keys(this.$listeners).forEach(event => {
         const handler = this.$listeners[event];
-
         if (event.indexOf('zr:') === 0) {
           chart.getZr().on(event.slice(3), handler);
         } else {
           chart.on(event, handler);
         }
       });
-
       if (this.calcAutoResize) {
         this.lastArea = this.getArea();
         this.__resizeHandler = debounce(
@@ -271,7 +263,6 @@ export default {
         this.__unwatchOptions();
         this.__unwatchOptions = null;
       }
-
       if (!this.manualUpdate) {
         this.__unwatchOptions = this.$watch(
           'options',
