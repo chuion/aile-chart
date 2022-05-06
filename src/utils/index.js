@@ -21,7 +21,7 @@ export function merge(defaultOption, option) {
           defaultOption[realKey][index] === undefined && (defaultOption[realKey][index] = {});
           merge(defaultOption[realKey][index], item);
         });
-      } else if (checkType(option[key] === 'object')) {
+      } else if (checkType(option[key]) === 'object') {
         merge(defaultOption[realKey], option[key]);
       } else {
         throw new Error(`传入错误参数【${key}】`);
